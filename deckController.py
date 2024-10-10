@@ -105,13 +105,15 @@ class deckController:
         random.shuffle(self.main_deck.cards)
     
     """
-    Get card from main deck from position index 
+    Get card from main deck from position index.
+    This method will be used in the game to visualize the card.
     """
     def getCardMainDeck(self, index):
         return self.main_deck[index]
     
     """
-    Get card from side deck from position index 
+    Get card from side deck from position index.
+    This method will be used in the game to visualize the card.
     """
     def getCardSideDeck(self, index):
         return self.side_deck[index]
@@ -123,3 +125,42 @@ class deckController:
         for suit in range(1,6):
             self.addCardSet(suit)
         self.shuffle()
+
+    """
+    Draws the top card from main deck, which is the last one.
+    It removes the card from the deck and returns it.
+    """
+    def draw(self):
+        return self.main_deck.cards.pop()
+    
+    """
+    Adds the card passed as parameter to the bottom of the main deck.
+    """
+    def addCardToBottom(self, card):
+        self.main_deck.insert(0, card)
+    
+    """
+    Add the card passed as parameter to the deck passed as parameter 
+    """
+    def addCardToDeck(self, card, deck):
+        deck.append(card)
+    
+    """
+    Search deck passed as parameter for position of the card passed as parameter, if exists. 
+    If the card exists, returns the index position of the card. Otherwise, returns False. 
+    """
+    def searchCardIndex(self, card, deck):
+        for index in range(0, len(deck)):
+            if deck[index] == card:
+                return index
+        return False
+    
+    """
+    Removes the card passed as parameter from the deck passed as parameter, if exists.
+    Returns the removed card. If the card doesn't exists, returns False. 
+    """
+    def removeCard(self, card, deck):
+        index = self.searchCardIndex(card, deck)
+        if index != False:
+            return deck.pop(index)
+        return False
