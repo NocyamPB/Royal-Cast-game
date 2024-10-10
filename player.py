@@ -1,6 +1,7 @@
 class player:
 
     name = ""
+    player_id = 0
     coins = 0
     suit = 0
     cards = []
@@ -8,14 +9,13 @@ class player:
     rerolls = 0
     dice = 3
     
-    def __init__(self) -> None:
-        pass
-
-    def __init__(self, name):
+    def __init__(self, name, id):
         self.name = name
+        self.player_id = id
 
     def display(self):
         print("Name:", self.name)
+        print("Player ID:", self.player_id)
         print("Coins:", self.coins)
         # Check the suit number and print its name
         if self.suit == 0:

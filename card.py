@@ -1,15 +1,14 @@
 class card:
 
     name = ""
+    code = ""
     suit = 0
     value = 0
     royal = False
-    
-    def __init__(self) -> None:
-        pass
 
-    def __init__(self, name, suit, value, royal):
+    def __init__(self, name, code, suit, value, royal):
         self.name = name
+        self.code = code
         self.suit = suit
         self.value = value
         self.royal = royal
@@ -33,3 +32,7 @@ class card:
         # Print remaining card information
         print("Value:", self.value)
         print("Royal Card:", self.royal)
+
+
+    def __str__(self):
+        return self.code
